@@ -46,7 +46,6 @@ class Spin(AbstractModel):
 class Code(AbstractModel):
     wheel = models.ForeignKey(Wheel, on_delete=models.CASCADE, related_name='codes', verbose_name=_('wheel'))
     spins_quantity = models.IntegerField(blank=True, null=True, verbose_name=_('spins quantity'))
-    server = models.CharField(max_length=255, verbose_name=_('server'), blank=True, null=True)
     status = models.CharField(max_length=255, verbose_name=_('status'), blank=True, null=True)
 
     class Meta:
