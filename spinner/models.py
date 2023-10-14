@@ -15,6 +15,9 @@ class AbstractModel(models.Model):
 
 class Gift(AbstractModel):
     possibility = models.DecimalField(max_digits=6, decimal_places=2)
+    image = models.ImageField(verbose_name=_('image'), upload_to='media', blank=True, null=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name=_('price'))
+    rarity = models.CharField(max_length=255, verbose_name=_('rarity'))
 
     class Meta:
         verbose_name = _('gift')
@@ -23,6 +26,7 @@ class Gift(AbstractModel):
 
 class Wheel(AbstractModel):
     gifts = models.ManyToManyField(Gift, related_name='wheels', verbose_name=_('gifts'))
+    image = models.ImageField(verbose_name=_('image'), upload_to='media', blank=True, null=True)
 
     class Meta:
         verbose_name = _('wheel')
@@ -41,7 +45,9 @@ class Spin(AbstractModel):
 
 class Code(AbstractModel):
     wheel = models.ForeignKey(Wheel, on_delete=models.CASCADE, related_name='codes', verbose_name=_('wheel'))
-    spins_quantity = models.IntegerField(blank=True, null=True)
+    spins_quantity = models.IntegerField(blank=True, null=True, verbose_name=_('spins quantity'))
+    server = models.CharField(max_length=255, verbose_name=_('server'), blank=True, null=True)
+    status = models.CharField(max_length=255, verbose_name=_('status'), blank=True, null=True)
 
     class Meta:
         verbose_name = _('code')

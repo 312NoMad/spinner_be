@@ -1,3 +1,4 @@
+from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Gift, Spin, Wheel, Code
@@ -12,16 +13,12 @@ class CodeViewSet(ModelViewSet):
 class SpinViewSet(ModelViewSet):
     queryset = Spin.objects.all()
     serializer_class = SpinSerializer
+    permission_classes = [AllowAny]
 
 
 class WheelViewSet(ModelViewSet):
     queryset = Wheel.objects.all()
     serializer_class = WheelSerializer
-
-
-class CodeViewSet(ModelViewSet):
-    queryset = Code.objects.all()
-    serializer_class = CodeSerializer
 
 
 class GiftViewSet(ModelViewSet):
