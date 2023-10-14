@@ -19,6 +19,7 @@ class SpinViewSet(ModelViewSet):
 class WheelViewSet(ModelViewSet):
     queryset = Wheel.objects.all()
     serializer_class = WheelSerializer
+    permission_classes = [AllowAny]
 
 
 class GiftViewSet(ModelViewSet):
