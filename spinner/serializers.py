@@ -10,7 +10,6 @@ class GiftSerializer(ModelSerializer):
 
 
 class WheelSerializer(ModelSerializer):
-    gifts = GiftSerializer(many=True)
 
     class Meta:
         model = Wheel
@@ -32,3 +31,7 @@ class CodeSerializer(ModelSerializer):
     class Meta:
         model = Code
         fields = '__all__'
+
+    def create(self, validated_data):
+        # Customize object creation here
+        return Code.objects.create(**validated_data)

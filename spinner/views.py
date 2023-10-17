@@ -6,7 +6,7 @@ from .serializers import SpinSerializer, WheelSerializer, GiftSerializer, CodeSe
 
 
 class CodeViewSet(ModelViewSet):
-    queryset = Gift.objects.all()
+    queryset = Code.objects.all()
     serializer_class = CodeSerializer
 
 
